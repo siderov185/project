@@ -1,0 +1,4 @@
+{{object.description}}
+{{object.title}}
+
+{{object.get_model_name}}

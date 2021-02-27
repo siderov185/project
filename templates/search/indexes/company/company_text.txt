@@ -1,0 +1,12 @@
+{{object.title}}
+{{object.short_description}}
+{{object.description}}
+
+{{ object.get_absolute_url }}
+
+{{object.get_model_name}}
+
+{% for politic in object.company_politics.all %}
+    {{politic.title}}
+    {{politic.description}}
+{% endfor %}

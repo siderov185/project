@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="page-overlay">
+</div>
+
+<div class="main-head">
+	<div class="background">
+		<img src="{% get_static_prefix %}images/large/about-us-1920x265.jpg" alt="" width="1920" height="256" />
+	</div>
+	<div class="main-head-title">
+		<div class="wrapper">
+			<h1 class="title">Често задавани въпроси</h1>
+			<h5 class="breadcrumbs">
+				<ul>
+					<li><a href="{% url 'index' %}"><span>начало</span></a></li>
+					<li><a href="{% url 'faqs' %}"><span>често задавани въпроси</span></a></li>
+				</ul>
+			</h5>
+		</div>
+	</div>
+</div>
+<div class="main">
+	<div class="wrapper">
+		<div class="main">
+			<div class="accord faq-accord">
+				<ul class="accord-list faq-accord-list">
+				{% for item in faqs_all %}
+					<li class="js-accord-scope">
+						<h5 class="js-accord-trigger">{{ item.question|safe|default:'' }}</h5>
+						<div class="js-accord-target">
+							<div class="b-text-wall">
+								<div class="richtext">
+									<h2 class="title">{{ item.question|safe|default:'' }}</h2>
+									<p class="text">{{ item.answer|safe|default:'' }}</p>
+								</div>
+							</div>
+						</div>
+					</li>
+				{% endfor %}
+
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

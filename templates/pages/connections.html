@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="page-overlay">
+</div>
+<div class="main-head">
+	<div class="background">
+		<img src="{% get_static_prefix %}images/large/about-us-1920x265.jpg" alt="" width="1920" height="256" />
+	</div>
+	<div class="main-head-title">
+		<div class="wrapper">
+			<h1 class="title">ВЪНШНИ ВРЪЗКИ</h1>
+			<div class="breadcrumbs">
+				<ul>
+					<li><a href="#"><span>начало</span></a></li>
+					<li><a href="#"><span>външни връзки</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="main">
+	<div class="wrapper">
+		<div class="body">
+			<div class="main-body">
+				<div class="b-connections">
+				{% for item in external_links_all %}
+					<div class="b-text-wall">
+						<div class="richtext">
+							<h2 class="heading">{{ item.title }}</h2>
+							<p class="text">{{ item.short_description }}</p>
+						</div>
+						<a class="btn btn-primary btn" href="{{ item.link_external_resource }}" target="_blank">ВИЖ ПОВЕЧЕ
+							<svg aria-hidden="true" class="icon arrow-icon-svg">
+								<use xlink:href="{% get_static_prefix %}images/svg-sprite.svg#arrow-icon"></use>
+							</svg>
+						</a>
+					</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

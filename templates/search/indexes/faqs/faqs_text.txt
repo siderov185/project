@@ -1,0 +1,4 @@
+{{object.question}}
+{{object.answer}}
+
+{{object.get_model_name}}

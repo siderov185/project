@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% load static i18n custom_tag %}
+
+{% block content %}
+
+<div class="page-overlay">
+</div>
+
+<div class="main-head">
+	<div class="background">
+		<img src="{% get_static_prefix %}images/large/about-us-1920x265.jpg" alt="" width="1920" height="256" />
+	</div>
+	<div class="main-head-title">
+		<div class="wrapper">
+			<h1 class="title">{{company.title}}</h1>
+			<div class="breadcrumbs">
+				<ul>
+					<li>
+						<a href="{% url 'index' %}"><span>{% trans "Начало" %}</span></a>
+					</li>
+					<li>
+						<a href="{% url 'company:companies' %}"><span>{% trans "Дружества" %}</span></a>
+					</li>
+					<li>
+						<a href="{{ company.get_absolute_url }}"><span>{{ company.title }}</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="main">
+	<div class="main-body">
+		<div class="wrapper">
+			<div class="b-cols-wrapper">
+				<div class="cols cols-full">
+					<div class="col col4of12">
+						<div class="sidebar">
+							<ul class="sidebar-controls">
+								{% for politic in company.company_politics.all %}
+									<li class="sidebar-link {% if forloop.first and not request.GET.politic %} has-flag {% elif request.GET.politic|to_int == politic.id %} has-flag {% endif %}" id="sidebar-trigger-{{forloop.counter}}">
+										<a href="#">{{politic.title}}</a>
+									</li>
+								{% endfor %}
+
+							</ul>
+							<div class="b-sidebar-options">
+
+								{% for politic in company.company_politics.all %}
+									<div class="sidebar-options sidebar-target-{{forloop.counter}} {% if forloop.first and not request.GET.politic %} has-flag {% elif request.GET.politic|to_int == politic.id %} has-flag {% endif %}">
+										<div class="textcontent">
+											<h2 class="title">{% trans "Сваляне на документи в различни формати" %}</h2>
+											<p class="text">{% trans "Ей тука, ей тъй, малко приказки за тока, живота, и пълненето на кутийки с текст." %}</p>
+										</div>
+										<ul class="sidebar-downloads">
+											{% for item in politic.link.all %}
+												<li class="sidebar-download" >
+													<pre>{{item.link.all}}</pre>
+													<a href="{{ MEDIA_URL }}{{ item.file_name }}" target="_blank">{{ item.title }}
+														<svg aria-hidden="true" class="icon icon-svg">
+															<use xlink:href="{% get_static_prefix %}images/svg-sprite.svg#download-icon"></use>
+														</svg>
+													</a>
+												</li>
+											{% endfor %}
+										</ul>
+									</div>
+								{% endfor %}
+
+							</div>
+						</div>
+					</div>
+					<div class="col col8of12">
+						<div class="b-companies-details">
+
+							{% for politic in company.company_politics.all %}
+								<div class="b-text-wall sidebar-target-{{ forloop.counter }} {% if forloop.first and not request.GET.politic %} has-flag {% elif request.GET.politic|to_int == politic.id %} has-flag {% endif %}">
+									<div class="richtext">
+										<p class="text">{{ politic.description|safe|default:"" }}</p>
+									</div>
+								</div>
+							{% endfor %}
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- for index header put additional class "header-index" -->
+<div class="background background-index">
+	<div class="index-wrapper">
+		<div class="main-head-index">
+			<div class="main-head-title">
+				<h1 class="title">чез пази вашите лични данни</h1>
+				<h5>Lorem Ipsum Dolor Sit Amet .....</h5>
+				<button class="btn btn-primary btn-grad-animated">Виж повече
+					<svg aria-hidden="true" class="icon arrow-icon-svg">
+						<use xlink:href="{% get_static_prefix %}images/svg-sprite.svg#arrow-icon"></use>
+					</svg>
+				</button>
+			</div>
+		</div>
+	</div>
+	<img src="{% get_static_prefix %}images/large/CEZ_main_head_4.jpg" alt="" width="1920" height="1146" />
+</div>
+<div class="main">
+	<div class="index-wrapper">
+		<div class="accents accents-index">
+			<div class="accents-head">
+				<h2 class="accents-title">акценти</h2>
+				<h4 class="accents-description">Lorem Ipsum Dolor Sit Amet Pastet Mish Mash Paprikash Chesun Banica and Bob with Nadenica</h4>
+			</div>
+			<div class="boxes boxes-accents">
+			{% for item in text_pages_all %}
+				<div class="box box-accents">
+					<svg aria-hidden="true" class="icon icon-svg">
+						<use xlink:href="{% get_static_prefix %}images/svg-sprite.svg#person-icon"></use>
+					</svg>
+					<div class="textcontent">
+						<h4>{{ item.title|safe|default:'' }}</h4>
+
+						<p>{{ item.description|safe|default:'' }}</p>
+						<a href="{{ item.get_absolute_url }}">прочети още
+							<svg aria-hidden="true" class="icon icon-svg">
+								<use xlink:href="{% get_static_prefix %}images/svg-sprite.svg#arrow-icon"></use>
+							</svg>
+						</a>
+					</div>
+				</div>
+
+			{% endfor %}
+			</div>
+		</div>
+		<div class="accents accents-news">
+			<div class="accents-head">
+				<h2 class="accents-title">Заглавие</h2>
+				<p class="textcontent">Lorem Ipsum Dolor Sit Amet Pastet Mish Mash Paprikash Chesun Banica and Bob with NadenicaLorem Ipsum Dolor Sit Amet Pastet Mish Mash Paprikash Chesun Banica and Bob with NadenicaLorem Ipsum Dolor Sit Amet Pastet Mish Mash Paprikash Chesun Banica and Bob with NadenicaLorem Ipsum Dolor Sit Amet Pastet Mish Mash Paprikash Chesun Banica and Bob with NadenicaLorem Ipsum Dolor Sit Amet Pastet Mish Mash Paprikash Chesun Banica and Bob with NadenicaLorem Ipsum Dolor Sit Amet Pastet Mish Mash Paprikash Chesun Banica and Bob with NadenicaLorem Ipsum Dolor Sit Amet Pastet Mish Mash Paprikash Chesun Banica and Bob with NadenicaLorem Ipsum Dolor Sit Amet Pastet Mish Mash Paprikash Chesun Banica and Bob with NadenicaLorem Ipsum Dolor Sit Amet Pastet Mish Mash Paprikash Chesun Banica and Bob with NadenicaLorem Ipsum Dolor Sit Amet Pastet Mish Mash Paprikash Chesun Banica and Bob with Nadenica</p>
+			</div>
+			<button class="btn btn-primary btn-grad-animated">Виж повече
+				<svg aria-hidden="true" class="icon arrow-icon-svg">
+					<use xlink:href="{% get_static_prefix %}images/svg-sprite.svg#arrow-icon"></use>
+				</svg>
+			</button>
+		</div>
+	</div>
+</div>
+{% endblock %}
