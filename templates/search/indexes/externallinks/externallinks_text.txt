@@ -1,4 +1,0 @@
-{{object.title}}
-{{object.short_description}}
-
-{{object.get_model_name}}

@@ -1,7 +1,0 @@
-{{object.company}}
-{{object.title}}
-{{object.address}}
-{{object.working_time}}
-{{object.phone_number}}
-
-{{object.get_model_name}}
